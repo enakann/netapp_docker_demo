@@ -15,7 +15,11 @@ storecontents=[
             {
                 "name":"Django Unchained",
                 "lead":"Jamie Foxx"
-            }
+            },
+            {
+                "name":"kill bill",
+                "lead":"uma thurma"
+            },
         ]
     },
 {
