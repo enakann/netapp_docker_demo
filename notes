@@ -1,0 +1,42 @@
+Why docker:
+----------
+1.Docker makes it really easy to install and run
+software without worrying about setup or dependencies
+2. avoid -> its working for you but not working for me
+3.isolated 
+4.fine tuned resource allocation
+13.235.42.127
+What is docker:
+---------------
+Docker is a platform or ecosystem around
+creating and running containers
+
+
+Docker client
+Docker server
+Docker Machine
+Docker Images
+Docker Hub
+Docker Compose
+
+
+docker run redis --> docker cli(docker client) ----> Docker server(docker daemon) ---> docker hub --> redis Image: Single file with all deps  ---------> container(instance of image,runs a program)
+																								and config required to run specific a program(redis)
+										            Docker server looked for image in local cache
+											
+										
+container - Instance of an image
+            Program with isolated set of resources
+			(memory,network,hard drive)
+			
+
+
+sudo docker build -t flask-rest .
+sudo docker run -p 5000:5000 flask-rest:latest
+requests.get('http://13.235.42.127:5000/director').json()
+
+to remember
+-----------
+1.Image will be cached in the local server
+2.	
+
