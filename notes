@@ -34,9 +34,85 @@ container - Instance of an image
 sudo docker build -t flask-rest .
 sudo docker run -p 5000:5000 flask-rest:latest
 requests.get('http://13.235.42.127:5000/director').json()
+https://github.com/enakann/netapp_docker_demo.git
 
 to remember
 -----------
 1.Image will be cached in the local server
-2.	
+
+
+
+Docker Working principle
+------------------------
+
+Namespacing:
+   Isolating resources per process(or group of process)
+   e.g) Processes,Hard driver,network,users,Hostnames,Interprocess comunication
+
+Control Groups:
+(cgroups)
+    Limiting amoutn of resource used per process
+	e.g)memory,CPU usage,HD I/O,Network bandwidth
+	
+Image:
+-------
+Image is snapshot of file system with very specific startup command
+
+Image = FS snapshot(source_code,dependencies) + starupcommand(./run.sh or apache run -d FOREGROUND)
+
+
+================================================================================================
+Docker clinet
+=============
+
+Override default command 
+-------------------------
+docker run busybox echo hi there
+
+container life cycle
+--------------------
+docker run = docker create + docker start
+
+docker create image  ---> prepping the container using the fs
+docker start container ---> executing the starup command
+
+exmaple
+--------
+[ec2-user@ip-172-31-18-234 ~]$ docker create hello-world
+5d48e0ec187bb8706da1ee78926074f17ccc149cf2108dbc3395b6e2a118c68b
+[ec2-user@ip-172-31-18-234 ~]$ docker start -a 5d48e0ec187bb8706da1ee78926074f17ccc149cf2108dbc3395b6e2a118c68b
+Hello from Docker!
+
+docker start without -a (attach to the container & give me any ouput from the cotnainer)
+
+Stop/Start container
+-------------------
+docker start -a containerid ( you cannot change the start process command)
+docker stop containerid (send SIGTERM  if it doesnt stop wait for 10s send SIGKILL)
+docker kill containerid(send SIGKILL)
+
+Executing command inside container
+------------------------------------------
+docker run redis
+docker exec -it <containerid> <command>
+
+docker run -it <imagename> bash 
+
+Entrypoint/cmd
+-------------
+docker run -d -p 80:8000 /myrepo/mydjangoapp 0.0.0.0:8000
+
+Anything that appears after the image name in the docker run command is passed to the container and treated as CMD arguments, basically as if it were specified in the dockerfile like this:
+ENTRYPOINT [“python”, “manage.py”, “runserver”]
+CMD ["0.0.0.0:8000"
+
+Containers doesnt share volume
+
+=============================================================================
+
+Custom Docker Images
+-------------------
+
+Dockerfile ---> Docker client --> Docker server --><Image to be used>
+
 
