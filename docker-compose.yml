@@ -7,3 +7,5 @@ services:
            - .:/usr/src/app
         ports:
            - "5000:5000"
+    redis-server:
+        image: redis

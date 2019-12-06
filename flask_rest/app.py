@@ -1,13 +1,15 @@
 from flask import Flask,request,jsonify,render_template
 from flask_restful import Api,Resource
+import redis
 import copy
 
 
 app=Flask(__name__)
 
 api=Api(app)
+r = redis.Redis(host='redis-server', port=6379, db=0)
 
-
+r.set('count',0)
 storecontents=[
     {
         "director":"QuentinTorantino",
@@ -48,7 +50,11 @@ def home():
 
 class Store(Resource):
     def get(self):
+        count=int(r.get('count'))
+        count+=1
+        r.set('count',count)
         new_storecontents = geturl_fordata(storecontents)
+        new_storecontents.append({'count':count})
         return jsonify({"storecontents":new_storecontents})
 
     def post(self):
@@ -84,4 +90,4 @@ api.add_resource(Item,"/director/<string:name>")
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0',port=5000)
