@@ -13,8 +13,8 @@ services:
         build:
           context: .
           dockerfile: Dockerfile.Dev
+        command: flask_rest/tests/test.py
         volumes:
-            - .:/usr/src/app
-        command: ['flask_rest/tests/test.py']
+           - .:/usr/src/app       
     redis-server:
         image: redis
