@@ -16,7 +16,7 @@ deploy:
   bucket_name: "elasticbeanstalk-ap-south-1-782007939849"
   bucket_path: "netapp_docker_demo_flask_rest"
   on:
-    branch: master
+    branch: feature
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
      secure: "$AWS_SECRET_KEY"
