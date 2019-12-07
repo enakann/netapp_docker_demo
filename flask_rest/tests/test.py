@@ -9,7 +9,7 @@ class CalcTest(unittest.TestCase):
      def test_add(self):
          self.assertEqual(3,self.calc.add())
      def test_add1(self):
-         self.assertEqual(2,self.calc.add())
+         self.assertEqual(3,self.calc.add())
 
 
 
