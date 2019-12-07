@@ -6,7 +6,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 #copy requirements.txt and install dependecies
 COPY requirements.txt /usr/src/app/
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt
 #copy the souce code to app dir
 COPY . /usr/src/app
 #expose port in which app will run

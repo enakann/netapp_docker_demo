@@ -36,6 +36,8 @@ sudo docker run -p 5000:5000 flask-rest:latest
 requests.get('http://13.235.42.127:5000/director').json()
 https://github.com/enakann/netapp_docker_demo.git
 
+docker-compose up
+
 to remember
 -----------
 1.Image will be cached in the local server
@@ -114,5 +116,49 @@ Custom Docker Images
 -------------------
 
 Dockerfile ---> Docker client --> Docker server --><Image to be used>
+
+if RUN command modifies the file system,a container is made out of it
+an image is created for the next step and the intermediate container is removed
+
+docker build -t rest_api_img .
+
+create Image out of container
+-----------------------------
+docker commit -c 'CMD ["redis-server"]' 39075447a38(<container-id>)
+
+============================================================================
+Dockerfile
+-----------
+#Pull down the necessary image
+FROM python:3-alpine
+#create app folder
+RUN mkdir -p /usr/src/app
+#change working directory
+WORKDIR /usr/src/app
+#copy requirements.txt and install dependecies
+COPY requirements.txt /usr/src/app/
+RUN pip3 install --no-cache-dir -r requirements.txt
+#copy the souce code to app dir
+COPY . /usr/src/app
+#expose port in which app will run
+EXPOSE 5000
+# Process to run when image is used to crate a container
+ENTRYPOINT ["python"]
+CMD ["flask_rest/app.py"]
+
+docker-compose.yml
+------------------
+version: '3'
+services:
+    movies_rest_api:
+        build: .
+        command: flask_rest/app.py
+        volumes:
+           - .:/usr/src/app
+        ports:
+           - "5000:5000"
+    redis-server:
+        image: redis
+
 
 
