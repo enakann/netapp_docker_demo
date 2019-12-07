@@ -9,12 +9,5 @@ services:
            - .:/usr/src/app
         ports:
            - "5000:5000"
-    movies_rest_api_test:
-        build:
-          context: .
-          dockerfile: Dockerfile.Dev
-        volumes:
-            - .:/usr/src/app
-        command: ['flask_rest/tests/test.py']
     redis-server:
         image: redis
