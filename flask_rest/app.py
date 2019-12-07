@@ -9,6 +9,7 @@ api=Api(app)
 
 r = redis.Redis(host='redis-server', port=6379, db=0)
 count=0
+r.set('count',count)
 storecontents=[
     {
         "director":"QuentinTorantino",

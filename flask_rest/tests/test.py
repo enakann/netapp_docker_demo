@@ -7,8 +7,9 @@ class CalcTest(unittest.TestCase):
      def setUpClass(cls):
          cls.calc=Calc(1,2)
      def test_add(self):
-         self.assertEquals(3,self.calc.add())
-
+         self.assertEqual(3,self.calc.add())
+     def test_add1(self):
+         self.assertEqual(2,self.calc.add())
 
 
 
