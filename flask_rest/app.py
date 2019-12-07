@@ -1,12 +1,12 @@
 from flask import Flask,request,jsonify,render_template
 from flask_restful import Api,Resource
+import redis
 import copy
 import redis
 
 app=Flask(__name__)
 
 api=Api(app)
-
 r = redis.Redis(host='redis-server', port=6379, db=0)
 count=0
 r.set('count',count)
