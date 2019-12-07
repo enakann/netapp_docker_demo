@@ -1,0 +1,37 @@
+{
+    "containerDefinitions": [
+        {
+            "command": [
+                "flask_rest/app.py"
+            ],
+            "essential": true,
+            "mountPoints": [
+                {
+                    "containerPath": "/usr/src/app",
+                    "sourceVolume": "_"
+                }
+            ],
+            "name": "movies_rest_api",
+            "portMappings": [
+                {
+                    "containerPort": 5000,
+                    "hostPort": 5000
+                }
+            ]
+        },
+        {
+            "essential": true,
+            "image": "redis",
+            "name": "redis-server"
+        }
+    ],
+    "family": "",
+    "volumes": [
+        {
+            "host": {
+                "sourcePath": "."
+            },
+            "name": "_"
+        }
+    ]
+}
