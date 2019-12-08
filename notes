@@ -1,3 +1,5 @@
+This commit has succesfully tested in docker & pushed the production images to docker hub
+
 Why docker:
 ----------
 1.Docker makes it really easy to install and run
