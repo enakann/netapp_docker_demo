@@ -1,5 +1,5 @@
-from flask import Flask,render_template
-
+from flask import Flask,render_template,send_file
+import os
 directors=[
     {
         "director":"QuentinTorantino",
@@ -26,11 +26,11 @@ directors=[
 ]
 
 
-app=Flask(__name__)
+app=Flask(__name__,template_folder='template')
 @app.route('/directors')
 def web_home():
+    #index_path = os.path.join(app.static_folder, "index2.html")
     return render_template("index.html",directors=directors)
-
 
 
 if __name__ == '__main__':
