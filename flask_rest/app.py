@@ -39,7 +39,7 @@ def geturl_fordata(ls):
     copy_ls=copy.deepcopy(ls)
     newcontent=[]
     for item in copy_ls:
-        item["url"]="http://127.0.0.1:5000/director/{}".format(item["director"])
+        item["url"]="http://127.0.0.1:5000/directors/{}".format(item["director"])
         newcontent.append(item)
     return newcontent
 
@@ -64,7 +64,7 @@ class Store(Resource):
             "movies":[]
         }
         storecontents.append(new_director)
-        return {"status":200,"store":new_store}
+        return {"status":200,"store":new_director}
 
 
 class Item(Resource):
@@ -84,10 +84,10 @@ class Item(Resource):
 
 
 
-api.add_resource(Store,'/director')
+api.add_resource(Store,'/directors')
 
 api.add_resource(Item,"/director/<string:name>")
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=5000)
+    app.run(host='0.0.0.0',port=5001)

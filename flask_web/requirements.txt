@@ -1,0 +1,5 @@
+flask
+nose
+xmlrunner
+pytest
+coverage

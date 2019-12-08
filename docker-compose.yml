@@ -1,15 +1,42 @@
 version: '3'
 services:
-    movies_rest_api:
+    nginx_proxy:
+      build:
+         context: nginx
+         dockerfile: Dockerfile
+      ports:
+         - "5000:80"
+      restart: "always"
+    directors_rest_api:
         build:
-          context: .
+          context: flask_rest
           dockerfile: Dockerfile.Dev
-        command: flask_rest/app.py
+        command: python app.py
         volumes:
            - .:/usr/src/app
         ports:
-           - "5000:5000"
+           - "5001:5001"
+        environment: 
+           - REDIS_HOST=redis
+           - REDIS_PORT=63
+           - PGUSER=postgres
+           - PGHOST=postgres
+           - PGPASSWORD=postgres_password
+           - PGPORT=5432
         depends_on: 
-          redis-server
+           - redis-server
+           - database
+    directors_web_app:
+        build:
+          context: flask_web
+          dockerfile: Dockerfile
+        command: python app.py
+        volumes:
+           - .:/usr/src/app
+        ports:
+           - "5002:5002"
+    database:
+       iamge: postgress
     redis-server:
         image: redis
+   
