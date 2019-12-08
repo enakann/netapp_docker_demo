@@ -7,7 +7,7 @@ before_install:
 
 script:
   #Testing
-  - docker run kannan1985/directors_rest_test python tests/test.py
+  - docker run docker_rest_api_test python tests/test.py
 
 after_success:
   - docker build -t kannan1985/directors_web_app ./flask_web
