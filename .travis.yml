@@ -3,7 +3,7 @@ services:
    - docker
 before_install:
   #Building image that will be used in the test
-  -  docker build -t docker_rest_api_test -f ./flask_rest/Dockerfile.dev
+  -  docker build -t docker_rest_api_test -f ./flask_rest/Dockerfile.dev .
 
 script:
   #Testing
