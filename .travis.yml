@@ -1,0 +1,21 @@
+sudo: required
+services:
+   - docker
+before_install:
+  #Building image that will be used in the test
+  -  docker build -t docker_rest_api_test -f ./flask_rest/Dockerfile.dev
+
+script:
+  #Testing
+  - docker run kannan1985/directors_rest_test python tests/test.py
+
+after_success:
+  - docker build -t kannan1985/directors_web_app ./flask_web
+  - docker build -t kannan1985/directors_rest_api ./flask_rest
+  - docker build -t kannan1985/directors_proxy ./nginx
+  
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push kannan1985/directors_web_app 
+  - docker push kannan1985/directors_rest_api
+  - docker push kannan1985/directors_proxy
