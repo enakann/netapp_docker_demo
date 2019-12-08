@@ -1,22 +1,21 @@
 sudo: required
 services:
-  - docker
-
+   - docker
 before_install:
-  - docker build -t kannan1985/netapp_docker_demo -f Dockerfile.dev .
+  #Building image that will be used in the test
+  -  docker build -t docker_rest_api_test -f ./flask_rest/Dockerfile.dev .
 
 script:
-  - docker run kannan1985/netapp_docker_demo python flask_rest/tests/test.py
+  #Testing
+  - docker run kannan1985/directors_rest_test python tests/test.py
 
-deploy:
-  provider: elasticbeanstalk
-  region: "ap-south-1"
-  app: "netapp_docker_demo_flask_rest"
-  env: "NetappDockerDemoFlaskRest-env"
-  bucket_name: "elasticbeanstalk-ap-south-1-782007939849"
-  bucket_path: "netapp_docker_demo_flask_rest"
-  on:
-    branch: feature
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-     secure: "$AWS_SECRET_KEY"
+after_success:
+  - docker build -t kannan1985/directors_web_app ./flask_web
+  - docker build -t kannan1985/directors_rest_api ./flask_rest
+  - docker build -t kannan1985/directors_proxy ./nginx
+  
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push kannan1985/directors_web_app 
+  - docker push kannan1985/directors_rest_api
+  - docker push kannan1985/directors_proxy
