@@ -1,6 +1,8 @@
 #Pull down the necessary image
-FROM python:3-alpine
+FROM python:3
 #create app folder 
+COPY ./nginx/uwsgi_flask_rest.service /etc/systemd/system/
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 RUN mkdir -p /usr/src/app
 #change working directory
 WORKDIR /usr/src/app
