@@ -15,4 +15,4 @@ class CalcTest(unittest.TestCase):
 
 if __name__ == "__main__":
     import xmlrunner
-    unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test_reports'))
+    unittest.main(testRunner=xmlrunner.XMLTestRunner(output='/tests/test_reports'))

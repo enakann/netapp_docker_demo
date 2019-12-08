@@ -4,4 +4,6 @@ services:
        build:
          context: .
          dockerfile: Dockerfile.dev
+       volumes:
+         - "./tests:/tests"
        command: ["python","/tests/test.py"]
