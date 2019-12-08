@@ -4,3 +4,4 @@
 nose*
 *zip
 .vscode
+test_reports
