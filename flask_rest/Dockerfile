@@ -6,3 +6,4 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 EXPOSE 5002
 COPY ./app /app
+COPY ./tests /tests

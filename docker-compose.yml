@@ -18,6 +18,7 @@ services:
          dockerfile: Dockerfile
        volumes:
          - ./flask_rest/app:/app
+         - ./flask_rest/tests:/tests
        ports:
          - "5002:5002"
        environment:
