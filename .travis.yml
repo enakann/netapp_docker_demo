@@ -19,3 +19,16 @@ after_success:
   - docker push kannan1985/directors_web_app 
   - docker push kannan1985/directors_rest_api
   - docker push kannan1985/directors_proxy
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: "directors_multi_container"
+  env: "DirectorsMultiContainer-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-782007939849"
+  bucket_path: "directors_multi_container_project"
+  on:
+    branch: feature
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+     secure: "$AWS_SECRET_KEY"
