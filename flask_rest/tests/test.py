@@ -7,10 +7,12 @@ class CalcTest(unittest.TestCase):
      def setUpClass(cls):
          cls.calc=Calc(1,2)
      def test_add(self):
-         self.assertEquals(3,self.calc.add())
-
+         self.assertEqual(3,self.calc.add())
+     def test_add1(self):
+         self.assertEqual(3,self.calc.add())
 
 
 
 if __name__ == "__main__":
-    unittest.main()
+    import xmlrunner
+    unittest.main(testRunner=xmlrunner.XMLTestRunner(output='/tests/test_reports'))

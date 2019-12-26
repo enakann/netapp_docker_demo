@@ -1,20 +1,43 @@
 version: '3'
 services:
-    movies_rest_api:
-        build:
-          context: .
-          dockerfile: Dockerfile.Dev
-        command: flask_rest/app.py
-        volumes:
-           - .:/usr/src/app
-        ports:
-           - "5000:5000"
-    movies_rest_api_test:
-        build:
-          context: .
-          dockerfile: Dockerfile.Dev
-        volumes:
-            - .:/usr/src/app
-        command: ['flask_rest/tests/test.py']
+    directors_web_app:
+       build:
+         context: ./flask_web
+         dockerfile: Dockerfile
+       volumes:
+         - ./flask_web/app:/app
+       ports:
+         - "5001:5001"
+       environment:
+         - FLASK_APP=app.py
+         - FLASK_DEBUG=1
+         - 'RUN=flask run --host=0.0.0.0 --port=80'
+    directors_rest_api:
+       build:
+         context: ./flask_rest
+         dockerfile: Dockerfile
+       volumes:
+         - ./flask_rest/app:/app
+         - ./flask_rest/tests:/tests
+       ports:
+         - "5002:5002"
+       environment:
+         - FLASK_APP=app.py
+         - FLASK_DEBUG=1
+         - 'RUN=flask run --host=0.0.0.0 --port=80'
+       depends_on:
+         - redis-server
     redis-server:
-        image: redis
+       image: redis
+    nginx:
+       build:
+         context: ./nginx
+         dockerfile: Dockerfile
+       ports:
+         - "5000:80"
+       restart: always
+       depends_on:
+         - directors_web_app
+         - directors_rest_api
+  
+      

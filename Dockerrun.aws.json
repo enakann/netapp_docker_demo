@@ -1,0 +1,42 @@
+{
+    "AWSEBDockerrunVersion":2,
+    "containerDefinitions":[
+        {
+            "name":"directors_web_app",
+            "image": "kannan1985/directors_web_app",
+            "hostname":"web",
+            "essential":false,
+            "memory":128
+        },
+        {
+            "name":"directors_rest_api",
+            "image": "kannan1985/directors_rest_api",
+            "hostname":"rest",
+            "essential":false,
+            "memory":128,
+            "links":["redis-server"]
+        },
+        {
+            "name":"redis-server",
+            "image":"redis",
+            "hostname":"redis-server",
+            "essential":false,
+            "memory":128
+        },
+        {
+            "name":"nginx",
+            "image":"kannan1985/directors_proxy",
+            "hostname":"nginx",
+            "essential":true,
+            "portMappings":[
+                {
+                    "hostPort":5000,
+                    "containerPort":80
+                }
+            ],
+            "links":["directors_web_app","directors_rest_api"],
+            "memory":128
+
+        }
+    ]
+}

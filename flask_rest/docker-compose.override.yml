@@ -1,0 +1,15 @@
+version: '3'
+services:
+  directors_rest:
+    volumes:
+      - ./app:/app
+    ports:
+      - "5002:5002"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_DEBUG=1
+      - 'RUN=flask run --host=0.0.0.0 --port=80'
+    depends_on: 
+      - redis-server
+  redis-server:
+     image: redis

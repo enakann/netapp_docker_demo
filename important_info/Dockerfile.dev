@@ -13,5 +13,4 @@ COPY . /usr/src/app
 ENV PYTHONPATH "${PYTHONPATH}:/usr/src/app/flask_rest"
 EXPOSE 5000
 # Process to run when image is used to crate a container
-ENTRYPOINT ["python"]
-CMD ["flask_rest/app.py"]
+CMD ["python", "flask_rest/tests/test.py"]

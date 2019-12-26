@@ -1,0 +1,7 @@
+FROM python:3-alpine
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+ENV PYTHONPATH "${PYTHONPATH}:/app"
+COPY ./flask_rest/app /app
+COPY ./flask_rest/tests /tests
+CMD ["python","tests/test.py"]

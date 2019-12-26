@@ -1,0 +1,34 @@
+sudo: required
+services:
+   - docker
+before_install:
+  #Building image that will be used in the test
+  -  docker build -t docker_rest_api_test -f ./flask_rest/Dockerfile.dev .
+
+script:
+  #Testing
+  - docker run docker_rest_api_test python tests/test.py
+
+after_success:
+  - docker build -t kannan1985/directors_web_app ./flask_web
+  - docker build -t kannan1985/directors_rest_api ./flask_rest
+  - docker build -t kannan1985/directors_proxy ./nginx
+  
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push kannan1985/directors_web_app 
+  - docker push kannan1985/directors_rest_api
+  - docker push kannan1985/directors_proxy
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: "directors_multi_container"
+  env: "DirectorsMultiContainer-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-782007939849"
+  bucket_path: "directors_multi_container_project"
+  on:
+    branch: feature
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+     secure: "$AWS_SECRET_KEY"

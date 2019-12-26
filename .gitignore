@@ -1,3 +1,7 @@
  __pycache__
 *pyc
 *swp
+nose*
+*zip
+.vscode
+test_reports
