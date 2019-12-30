@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: rest-deployment
+spec:
+  replicas: 2
+  selector:
+     matchLabels:
+       component: rest
+  template:
+    metadata:
+      labels:
+        component: rest 
+    spec:
+      containers:
+         - name: rest-container
+           image: kannan1985/directors_rest_api
+           ports:
+             - containerPort: 5001
+           env:
+             - name: REDIS_HOST
+               value: redis-cluster-ip-service    #this is from the redis-cluster-ip-service.yaml
+             - name: REDIS_PORT
+               value: 6379
+                 

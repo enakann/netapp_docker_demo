@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  replicas: 3
+  selector:
+     matchLabels:
+        component: web
+  template:
+     metadata:
+        labels:
+           component: web
+     spec:
+        containers:
+          - name: webcontainer
+            image: kannan1985/directors_web_app
+            ports:
+              - containerPort: 5002
+            env:
+             - name: REDIS_HOST
+               value: redis-cluster-ip-service    #this is from the redis-cluster-ip-service.yaml
+             - name: REDIS_PORT
+               value: 6379
+             - name: PGUSER
+               value: postgres
+             - name: PGPORT
+               value: 5432
+             - name: PGDATABASE
+               value: postgres
+             - name: PGPASSWORD
+               valueFrom: 
+                  secretKeyRef:
+                    name: pgpassword
+                    key: PGPASSWORD
