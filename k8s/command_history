@@ -1,0 +1,260 @@
+  775  kubectl get storageclass
+  776  kubectl get storageclass --all
+  777  kubectl get storageclass --help
+  778  kubectl get storageclass -A
+  779  kubectl get storageclass  --include-uninitialized
+  780  kubectl get storageclass  -A
+  781  kubectl describe storageclass
+  782  kubectl get pods
+  783  ll
+  784  cd k8s_deploy/
+  785  ll
+  786  vim vim postgres-deployment.yaml
+  787  vim postgres-deployment.yaml
+  788  vim database_persistent_volume_claim.yaml
+  789  pwd
+  790  cd ..
+  791  kubectl apply -f k8s_deploy/
+  792  vim "k8s_deploy/database_persistent_volume_claim.yaml"
+  793  kubectl apply -f k8s_deploy/
+  794  kubectl get pods
+  795  kubectl get pv
+  796  kubectl get pv -A
+  797  kubectl get pv
+  798  kubectl get pv -A
+  799  kubectl get pods
+  800  kubectl describe postgres-deployment-6767f87b54-s5xgp
+  801  kubectl describe pod postgres-deployment-6767f87b54-s5xgp
+  802  pwd
+  803  kubectl describe pod postgres-deployment-6767f87b54-s5xgp
+  804  cd ..
+  805  kubectl apply -f k8s_deploy/
+  806  pwd
+  807  ll
+  808  pwd
+  809  cd kubernetes/
+  810  ll
+  811  kubectl apply -f k8s_deploy/
+  812  kubectl get pods
+  813  kubectl describe pod postgres-deployment-6767f87b54-s5xgp
+  814  kubectl get pods
+  815  ll
+  816  kubect delete postgres-deployment-6767f87b54-s5xgp
+  817  kubectl delete postgres-deployment-6767f87b54-s5xgp
+  818  kubectl delete pod postgres-deployment-6767f87b54-s5xgp
+  819  kubectl get pods
+  820  kubectl get deployment
+  821  kubectl delete pod postgres-deployment-6767f87b54-s5xgp
+  822  kubectl get pod
+  823  kubectl describe pod postgres-deployment-6767f87b54-bk7kg
+  824  kubectl get pod
+  825  kubectl get pod postgres-deployment-6767f87b54-bk7kg
+  826  kubectl get pods
+  827  ll
+  828  cd k8s_deploy/
+  829  ll
+  830  vim database_persistent_volume_claim.yaml
+  831  kubectl apply -f k8s_deploy/
+  832  cd ..
+  833  kubectl apply -f k8s_deploy/
+  834  ll
+  835  vim k8s_deploy/database_persistent_volume_claim.yaml
+  836  ll
+  837  vim k8s_deploy/postgres-deployment.yaml
+  838  cat database_persistent_volume_claim.yaml
+  839  cat k8s_deploy/database_persistent_volume_claim.yaml
+  840  cat k8s_deploy/postgres-deployment.yaml
+  841  ll
+  842  vim k8s_deploy/postgres-deployment.yaml
+  843  kubectl apply -f k8s_deploy/
+  844  kubectl get pods
+  845  kubectl describe postgres-deployment-6767f87b54-bk7kg
+  846  kubectl describe pod postgres-deployment-6767f87b54-bk7kg
+  847  ll
+  848  kubectl get pvc
+  849  ll
+  850  cat k8s_deploy/database_persistent_volume_claim.yaml
+  851  vim k8s_deploy/database_persistent_volume_claim.yaml
+  852  ll
+  853  vim k8s_deploy/postgres-deployment.yaml
+  854  kubectl apply -f k8s_deploy/
+  855  vim k8s_deploy/postgres-deployment.yaml
+  856  vim k8s_deploy/database_persistent_volume_claim.yaml
+  857  vim k8s_deploy/postgres-deployment.yaml
+  858  kubectl apply -f k8s_deploy/
+  859  vim k8s_deploy/postgres-deployment.yaml
+  860  kubectl apply -f k8s_deploy/
+  861  vim k8s_deploy/postgres-deployment.yaml
+  862  kubectl apply -f k8s_deploy/
+  863  kubectl get pods
+  864  kubectl describe pod postgres-deployment-6d98f876dc-j6bms
+  865  kubectl get pvc
+  866  ll
+  867  vim k8s_deploy/database_persistent_volume_claim.yaml
+  868  ll /temp
+  869  vim k8s_deploy/database_persistent_volume_claim.yaml
+  870  ll /tmp
+  871  kubectl apply -f k8s_deploy/
+  872  vim k8s_deploy/database_persistent_volume_claim.yaml
+  873  vim k8s_deploy/postgres-deployment.yaml
+  874  ll
+  875  kubectl get pvs
+  876  kubectl get pvc
+  877  kubectl delete pvc database-persistent-volume-claim
+  878  kubectl delete pvc database-persistent-volume-claim1
+  879  ll
+  880  vim k8s_deploy/database_persistent_volume_claim.yaml
+  881  vim k8s_deploy/postgres-deployment.yaml
+  882  kubectl get deployment
+  883  kubectl delete deployment postgres-deployment
+  884  kubectl get deployment
+  885  kubectl get pods
+  886  vim k8s_deploy/postgres-deployment.yaml
+  887  kubectl apply -f k8s_deploy/
+  888  vim "k8s_deploy/database_persistent_volume_claim.yaml"
+  889  kubectl apply -f k8s_deploy/
+  890  vim "k8s_deploy/database_persistent_volume_claim.yaml"
+  891  kubectl apply -f k8s_deploy/
+  892  kubectl get pods
+  893  kubectl describe pod postgres-deployment-57df47d64f-tkw4q
+  894  kubectl apply -f k8s_deploy/
+  895  kubectl get pods
+  896  kubectl get pvc
+  897  kubectl describe pod postgres-deployment-57df47d64f-tkw4q
+  898  kubectl get pvc
+  899  ll
+  900  cat "k8s_deploy/database_persistent_volume_claim.yaml"
+  901  ll
+  902  cat "k8s_deploy/database_persistent_volume_claim.yaml"
+  903  cat "k8s_deploy/postgres-deployment.yaml"
+  904  kubectl get storageclass
+  905  kubectl get storageclass -A
+  906  kubectl get pv --all-namespaces
+  907  kubectl get pvc --all-namespaces
+  908  kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345ASDF
+  909  kubectl get secrets
+  910  kubectl get pods
+  911  ll
+  912  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
+  913  kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/baremetal/service-nodeport.yaml
+  914  kubectl get svc -n ingress-nginx
+  915  ll
+  916  vim k8s_deploy/ingress-service.yaml
+  917  kubectl create -f k8s_deploy/
+  918  kubectl get svc
+  919  kubectl get pods
+  920  kubectl get pods -A
+  921  ll
+  922  kubectl apply -f k8s_deploy/
+  923  kubectl get pods
+  924  kubectl get svc
+  925  kubectl get nods
+  926  kubectl get nodes
+  927  docker ps
+  928  docker stop 22597503ce6b
+  929  curl localhost
+  930  curl localhost/directors
+  931  kubectl get services
+  932  kubectl get pods
+  933  history
+  934  cat k8s_deploy/ingress-service.yaml
+  935  sudo systemctl nginx stop
+  936  sudo systemctl stop ngi
+  937  curl localhost/directors
+  938  ll
+  939  cat k8s_deploy/ingress-service.yaml
+  940  kubectl apply -f k8s_deploy/ingress-service.yaml
+  941  kubectl get ing
+  942  curl http://10.96.107.26/directors
+  943  kubectl get ing -o wide
+  944  curl http://10.96.107.26
+  945  ping 10.96.107.26
+  946  kubectl get nodes
+  947  kubectl get nodes -o wide
+  948  kubectl get nodes
+  949  kubectl get ing -o wide
+  950  ll
+  951  kubectl get pods
+  952  kubectl describe pod web-deployment-5d655c96bc-682ps
+  953  cat k8s_deploy/web_cluster-ip_service.yaml
+  954  cat k8s_deploy/ingress-service.yaml
+  955  cp k8s_deploy/ingress-service.yaml k8s_deploy/ingress-service_cp.yaml
+  956  vim k8s_deploy/ingress-service.yaml
+  957  kubectl apply -f k8s_deploy/ingress-service.yaml
+  958  kubectl get ing
+  959  curl http://10.96.107.26/directors
+  960  curl http://10.96.107.26/api/directors
+  961  ll
+  962  kubectl get pods
+  963  kubectl logs web-deployment-5d655c96bc-682ps
+  964  kubectl get pods
+  965  kubectl logs rest-deployment-5dc454f7b8-kq2mf
+  966  kubectl get pods
+  967  kubectl logs rest-deployment-5dc454f7b8-kq2mf
+  968  kubectl get deployments
+  969  kubectl delete deployment rest-deployment
+  970  kubectl apply -f k8s_deploy/
+  971  kubectl get pods
+  972  kubectl logs rest-deployment-5dc454f7b8-srwqs
+  973  kubectl get pods
+  974  kubectl logs web-deployment-5d655c96bc-xdm28
+  975  kubectl get pods
+  976  kubectl get ing
+  977  vim k8s_deploy/ingress-service.yaml
+  978  vim k8s_deploy/ingress-service.yaml \
+  979  vim k8s_deploy/ingress-service.yaml
+  980  kubectl describe service ingress-service
+  981  kubectl describe  ingress-service
+  982  kubectl get svc
+  983  kubectl get ing
+  984  kubectl describe  ingress-service
+  985  kubectl describe ing ingress-service
+  986  vim k8s_deploy/ingress-service.yaml
+  987  kubectl describe ing ingress-service
+  988  kubectl delete ing ingress-service
+  989  kubectl apply -f k8s_deploy/
+  990  kubectl describe ing ingress-service\
+  991  kubectl describe ing ingress-service
+  992  kubectl delete ing ingress-service
+  993  ll
+  994  kubectl describe ing ingress-service
+  995  kubectl apply -f k8s_deploy/ingress-service.yaml
+  996  kubectl describe ing ingress-service
+  997  vim k8s_deploy/ingress-service.yaml
+  998  kubernetes --version
+  999  kubectl --version
+ 1000  kubectl -n ingress-nginx get svc
+ 1001  kubectl get svc
+ 1002  history
+ 1003  kubectl get svc --namespace=kube-system
+ 1004  kubectl get pods
+ 1005  kubectl exec -it web-deployment-fc844cfdd-cb8qq bash
+ 1006  iptables -t nat -S
+ 1007  sudo iptables -t nat -S
+ 1008  history
+ 1009  iptables -t nat -I POSTROUTING -s 10.244.0.7 -p udp --dport 53 -j MASQUERADE
+ 1010  sudo iptables -t nat -I POSTROUTING -s 10.244.0.7 -p udp --dport 53 -j MASQUERADE
+ 1011  sudo iptables -t nat -S | grep 10.96.0.10
+ 1012  kubectl get svc -A
+ 1013  kubectl --help | grep network(
+ 1014  kubectl --help | grep network*
+ 1015  kubectl --help | grep netw*
+ 1016  service kubelet restart
+ 1017  ip link list | grep cali
+ 1018  ip link list
+ 1019  ip link list | grep fl*
+ 1020  ip link list | grep fla*
+ 1021  ll
+ 1022  cd kubernetes/
+ 1023  ll
+ 1024  cd k8s_deploy/
+ 1025  ll
+ 1026  ls -lrth
+ 1027  cat redis-deployment.yaml
+ 1028  cat web_deployment.yaml
+ 1029  cat web_cluster-ip_service.yaml
+ 1030  cat rest_deployment.yaml
+ 1031  cat rest-cluster-ip-service.yaml
+ 1032  cat ingress-service.yaml
+ 1033  history
+

@@ -16,16 +16,16 @@ spec:
           - name: webcontainer
             image: kannan1985/directors_web_app
             ports:
-              - containerPort: 5002
+              - containerPort: 5001
             env:
              - name: REDIS_HOST
                value: redis-cluster-ip-service    #this is from the redis-cluster-ip-service.yaml
              - name: REDIS_PORT
-               value: 6379
+               value: '6379'
              - name: PGUSER
                value: postgres
              - name: PGPORT
-               value: 5432
+               value: '5432'
              - name: PGDATABASE
                value: postgres
              - name: PGPASSWORD

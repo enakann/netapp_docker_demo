@@ -16,10 +16,10 @@ spec:
          - name: rest-container
            image: kannan1985/directors_rest_api
            ports:
-             - containerPort: 5001
+             - containerPort: 5002
            env:
              - name: REDIS_HOST
                value: redis-cluster-ip-service    #this is from the redis-cluster-ip-service.yaml
              - name: REDIS_PORT
-               value: 6379
+               value: '6379'
                  
